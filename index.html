@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brew Haven Coffee Shop</title>
+
+    <link href="bootstrap-5.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/all.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- #region Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-coffee"></i> Brew Haven
+            </a>
+            <div class="d-flex align-items-center">
+                <button class="theme-toggle me-3" onclick="toggleTheme()">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- #endregion -->
+
+    <!-- #region Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-background-image"></div>
+
+        <div class="hero-content">
+            <h1>Welcome to Brew Haven</h1>
+            <p>Where every cup tells a story and every sip creates memories</p>
+            <button class="btn btn-custom" onclick="scrollToSection('menu')">View Our Menu</button>
+        </div>
+    </section>
+    <!-- #endregion -->
+
+    <!-- #region Image Carousel -->
+    <div id="coffeeCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="images/carousel-coffee-bean.jpg" class="carousel-image" alt="Premium Coffee Beans">
+                <div class="carousel-content">
+                    <h3>Premium Coffee Beans</h3>
+                    <p>Sourced from the finest farms around the world</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="images/carousel-pastries.jpg" class="carousel-image" alt="Artisan Pastries">
+                <div class="carousel-content">
+                    <h3>Artisan Pastries</h3>
+                    <p>Freshly baked every morning with love</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="images/carousel-atmosphere.jpg" class="carousel-image" alt="Cozy Atmosphere">
+                <div class="carousel-content">
+                    <h3>Cozy Atmosphere</h3>
+                    <p>The perfect place to work, meet friends, or relax</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#coffeeCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#coffeeCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+    <!-- #endregion -->
+
+    <!-- #region Menu Section -->
+    <section id="menu" class="section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Menu</h2>
+                <p>Discover our carefully crafted selection of premium coffees, teas, and delicious treats</p>
+            </div>
+
+            <!-- #region Menu Filters -->
+            <div class="text-center mb-5">
+                <div class="d-flex flex-wrap justify-content-center">
+                    <button class="filter-btn active" onclick="filterMenu('all')">All</button>
+                    <button class="filter-btn" onclick="filterMenu('coffee')">Coffee</button>
+                    <button class="filter-btn" onclick="filterMenu('tea')">Tea</button>
+                    <button class="filter-btn" onclick="filterMenu('pastries')">Pastries</button>
+                    <button class="filter-btn" onclick="filterMenu('specials')">Specials</button>
+                </div>
+                <div class="mt-3">
+                    <input type="text" id="searchInput" class="form-control search-input" placeholder="Search menu items...">
+                </div>
+            </div>
+            <!-- #endregion -->
+
+            <!-- #region Menu Items Grid -->
+            <div class="row" id="menuItems">
+                <!-- Coffee Items -->
+                <div class="col-lg-4 col-md-6 menu-item-wrapper" data-category="coffee">
+                    <div class="menu-item">
+                        <img src="images/menu-espresso.jpg" alt="Espresso" class="menu-item-image">
+                        <h4>Espresso <span class="price">$3.50</span></h4>
+                        <p>Rich, bold espresso shot with a perfect crema layer</p>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="updateQuantity(this, -1)">-</button>
+                            <span class="quantity">0</span>
+                            <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            <button class="btn btn-sm btn-custom ms-2" onclick="addToOrder('Espresso', 3.50, this)">Add to Order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 menu-item-wrapper" data-category="coffee">
+                    <div class="menu-item">
+                        <img src="images/menu-cappuccino.jpg" alt="Cappuccino" class="menu-item-image">
+                        <h4>Cappuccino <span class="price">$4.25</span></h4>
+                        <p>Perfect blend of espresso, steamed milk, and foam</p>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="updateQuantity(this, -1)">-</button>
+                            <span class="quantity">0</span>
+                            <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            <button class="btn btn-sm btn-custom ms-2" onclick="addToOrder('Cappuccino', 4.25, this)">Add to Order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 menu-item-wrapper" data-category="coffee">
+                    <div class="menu-item">
+                        <img src="images/menu-latte.jpg" alt="Latte" class="menu-item-image">
+                        <h4>Latte <span class="price">$4.75</span></h4>
+                        <p>Smooth espresso with steamed milk and light foam</p>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="updateQuantity(this, -1)">-</button>
+                            <span class="quantity">0</span>
+                            <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            <button class="btn btn-sm btn-custom ms-2" onclick="addToOrder('Latte', 4.75, this)">Add to Order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tea Items -->
+                <div class="col-lg-4 col-md-6 menu-item-wrapper" data-category="tea">
+                    <div class="menu-item">
+                        <img src="images/menu-earl-grey.jpg" alt="Earl Grey" class="menu-item-image">
+                        <h4>Earl Grey <span class="price">$3.25</span></h4>
+                        <p>Classic black tea with bergamot oil</p>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="updateQuantity(this, -1)">-</button>
+                            <span class="quantity">0</span>
+                            <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            <button class="btn btn-sm btn-custom ms-2" onclick="addToOrder('Earl Grey', 3.25, this)">Add to Order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 menu-item-wrapper" data-category="tea">
+                    <div class="menu-item">
+                        <img src="images/menu-green-tea.jpg" alt="Green Tea" class="menu-item-image">
+                        <h4>Green Tea <span class="price">$3.00</span></h4>
+                        <p>Fresh and light with antioxidants</p>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="updateQuantity(this, -1)">-</button>
+                            <span class="quantity">0</span>
+                            <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            <button class="btn btn-sm btn-custom ms-2" onclick="addToOrder('Green Tea', 3.00, this)">Add to Order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pastries -->
+                <div class="col-lg-4 col-md-6 menu-item-wrapper" data-category="pastries">
+                    <div class="menu-item">
+                        <img src="images/menu-croissant.jpg" alt="Croissant" class="menu-item-image">
+                        <h4>Croissant <span class="price">$2.75</span></h4>
+                        <p>Buttery, flaky pastry baked fresh daily</p>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="updateQuantity(this, -1)">-</button>
+                            <span class="quantity">0</span>
+                            <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            <button class="btn btn-sm btn-custom ms-2" onclick="addToOrder('Croissant', 2.75, this)">Add to Order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Special Items -->
+                <div class="col-lg-4 col-md-6 menu-item-wrapper" data-category="specials">
+                    <div class="menu-item">
+                        <img src="images/menu-house-special.jpg" alt="House Special" class="menu-item-image">
+                        <h4>House Special <span class="price">$5.50</span></h4>
+                        <p>Our signature blend with caramel and vanilla</p>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="updateQuantity(this, -1)">-</button>
+                            <span class="quantity">0</span>
+                            <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            <button class="btn btn-sm btn-custom ms-2" onclick="addToOrder('House Special', 5.50, this)">Add to Order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 menu-item-wrapper" data-category="specials">
+                    <div class="menu-item">
+                        <img src="images/menu-seasonal-latte.jpg" alt="Seasonal Latte" class="menu-item-image">
+                        <h4>Seasonal Latte <span class="price">$5.25</span></h4>
+                        <p>Changes with the season - ask what's featured today!</p>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="updateQuantity(this, -1)">-</button>
+                            <span class="quantity">0</span>
+                            <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            <button class="btn btn-sm btn-custom ms-2" onclick="addToOrder('Seasonal Latte', 5.25, this)">Add to Order</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #endregion -->
+
+            <!-- #region Order Summary -->
+            <div class="order-section" id="orderSection">
+                <h3><i class="fas fa-shopping-cart"></i> Your Order</h3>
+                <div id="orderItems"></div>
+                <div class="order-total" id="orderTotal">
+                    <h4>Total: $0.00</h4>
+                    <button class="btn btn-light mt-3" onclick="submitOrder()">
+                        <i class="fas fa-check"></i> Submit Order
+                    </button>
+                </div>
+            </div>
+            <!-- #endregion -->
+        </div>
+    </section>
+    <!-- #endregion -->
+
+    <!-- #region About Section -->
+    <section id="about" class="section-padding about-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Brew Haven</h2>
+                <p>Learn about our story, mission, and the passionate team behind every cup</p>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <img src="images/about-coffee-shop.jpg" alt="Brew Haven Coffee Shop Interior" class="about-image">
+                </div>
+                <div class="col-lg-6">
+                    <h3>Our Story</h3>
+                    <p class="mb-4">Founded in 2018, Brew Haven began as a small neighborhood coffee shop with a big dream: to create a warm, welcoming space where community members could connect over exceptional coffee.</p>
+                    
+                    <h4>Our Mission</h4>
+                    <p class="mb-4">We are committed to serving ethically sourced, premium coffee while fostering meaningful connections within our community. Every cup we serve is a testament to our dedication to quality and sustainability.</p>
+
+                    <h4>Meet Our Team</h4>
+                    <p>Our passionate baristas and team members bring years of experience and genuine love for coffee to every interaction. We believe that great coffee is made by great people.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- #endregion -->
+
+    <!-- #region Customer Reviews -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Customers Say</h2>
+                <p>Read testimonials from our valued customers</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <img src="images/customer-emma.jpg" alt="Emma Rodriguez" class="customer-photo">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Love the community feel here. The baristas remember my order, and I've made so many friends. It's more than just a coffee shop - it's home."</p>
+                        <h5>- Emma Rodriguez</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- #endregion -->
+
+    <!-- #region Gallery Section -->
+    <section id="gallery" class="section-padding gallery-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Gallery</h2>
+                <p>Take a visual journey through our coffee shop experience</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <img src="images/gallery-coffee-making.jpg" alt="Coffee Making Process" class="gallery-image">
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <img src="images/gallery-customers.jpg" alt="Happy Customers" class="gallery-image">
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <img src="images/gallery-pastries-display.jpg" alt="Pastries Display" class="gallery-image">
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <img src="images/gallery-barista-work.jpg" alt="Barista at Work" class="gallery-image">
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <img src="images/gallery-cozy-corner.jpg" alt="Cozy Corner" class="gallery-image">
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <img src="images/gallery-coffee-beans.jpg" alt="Fresh Coffee Beans" class="gallery-image">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- #endregion -->
+
+    <!-- #region Contact Section -->
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch with us - we'd love to hear from you!</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-8">
+                    <form class="contact-form" id="contactForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Your Name" required id="contactName">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" placeholder="Your Email" required id="contactEmail">
+                            </div>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Subject" required id="contactSubject">
+                        <textarea class="form-control" rows="5" placeholder="Your Message" required id="contactMessage"></textarea>
+                        <button type="submit" class="btn btn-custom">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+                <div class="col-lg-4">
+                    <div class="contact-info">
+                        <div class="mb-4">
+                            <h5><i class="fas fa-map-marker-alt me-2"></i>Address</h5>
+                            <p>123 Coffee Street<br>Downtown, City 12345</p>
+                        </div>
+                        <div class="mb-4">
+                            <h5><i class="fas fa-phone me-2"></i>Phone</h5>
+                            <p>(555) 123-4567</p>
+                        </div>
+                        <div class="mb-4">
+                            <h5><i class="fas fa-envelope me-2"></i>Email</h5>
+                            <p>hello@brewhaven.com</p>
+                        </div>
+                        <div class="mb-4">
+                            <h5><i class="fas fa-clock me-2"></i>Hours</h5>
+                            <p>Mon-Fri: 6:00 AM - 9:00 PM<br>
+                               Sat-Sun: 7:00 AM - 10:00 PM</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Google Map -->
+                    <div class="mt-4">
+                        <div class="map-placeholder" onclick="openMap()">
+                            <img src="images/map-placeholder.jpg" alt="Location Map" class="map-image">
+                            <div class="map-overlay">
+                                <i class="fas fa-map-marked-alt"></i>
+                                <p>Click to view interactive map</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- #endregion -->
+
+    <!-- #region Newsletter Subscription -->
+    <section class="section-padding newsletter-section">
+        <div class="container text-center">
+            <h2>Stay Connected</h2>
+            <p class="mb-4">Subscribe to our newsletter for updates on new menu items, events, and special offers</p>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <form class="d-flex newsletter-form" id="newsletterForm">
+                        <input type="email" class="form-control me-3" placeholder="Enter your email" required id="newsletterEmail">
+                        <button type="submit" class="btn btn-light">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- #endregion -->
+
+    <!-- #region Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h5><i class="fas fa-coffee"></i> Brew Haven</h5>
+                    <p>Creating memorable coffee experiences since 2018. We're more than just a coffee shop - we're your neighborhood gathering place.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h5>Menu Categories</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#menu">Coffee</a></li>
+                        <li><a href="#menu">Tea</a></li>
+                        <li><a href="#menu">Pastries</a></li>
+                        <li><a href="#menu">Specials</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h5>Contact Info</h5>
+                    <p><i class="fas fa-map-marker-alt me-2"></i>123 Coffee Street, Downtown</p>
+                    <p><i class="fas fa-phone me-2"></i>(555) 123-4567</p>
+                    <p><i class="fas fa-envelope me-2"></i>hello@brewhaven.com</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p>&copy; 2024 Brew Haven. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="me-3">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- #endregion -->
+
+    <script src="bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
