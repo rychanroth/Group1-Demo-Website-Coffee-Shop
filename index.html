@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brew Haven Coffee Shop</title>
+    <title>June Coffee Shop</title>
 
     <link href="bootstrap-5.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/all.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
-    <!-- #region Navigation -->
+    <!-- #region Navigation Bar -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#home">
-                <i class="fas fa-coffee"></i> Brew Haven
+                <i class="fas fa-coffee"></i> June Coffee Shop
             </a>
             <div class="d-flex align-items-center">
                 <button class="theme-toggle me-3" onclick="toggleTheme()">
@@ -42,7 +42,7 @@
         <div class="hero-background-image"></div>
 
         <div class="hero-content">
-            <h1>Welcome to Brew Haven</h1>
+            <h1>Welcome to June Coffee Shop</h1>
             <p>Where every cup tells a story and every sip creates memories</p>
             <button class="btn btn-custom" onclick="scrollToSection('menu')">View Our Menu</button>
         </div>
@@ -246,16 +246,16 @@
     <section id="about" class="section-padding about-section">
         <div class="container">
             <div class="section-title">
-                <h2>About Brew Haven</h2>
+                <h2>About June Coffee Shop</h2>
                 <p>Learn about our story, mission, and the passionate team behind every cup</p>
             </div>
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <img src="images/about-coffee-shop.jpg" alt="Brew Haven Coffee Shop Interior" class="about-image">
+                    <img src="images/about-coffee-shop.jpg" alt="June Coffee Shop Interior" class="about-image">
                 </div>
                 <div class="col-lg-6">
                     <h3>Our Story</h3>
-                    <p class="mb-4">Founded in 2018, Brew Haven began as a small neighborhood coffee shop with a big dream: to create a warm, welcoming space where community members could connect over exceptional coffee.</p>
+                    <p class="mb-4">Founded in 2025, June Coffee Shop began as a small neighborhood coffee shop with a big dream: to create a warm, welcoming space where community members could connect over exceptional coffee.</p>
                     
                     <h4>Our Mission</h4>
                     <p class="mb-4">We are committed to serving ethically sourced, premium coffee while fostering meaningful connections within our community. Every cup we serve is a testament to our dedication to quality and sustainability.</p>
@@ -276,22 +276,55 @@
                 <p>Read testimonials from our valued customers</p>
             </div>
             <div class="row">
-                <div class="col-lg-4">
-                    <div class="testimonial-card">
-                        <img src="images/customer-emma.jpg" alt="Emma Rodriguez" class="customer-photo">
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p>"Love the community feel here. The baristas remember my order, and I've made so many friends. It's more than just a coffee shop - it's home."</p>
-                        <h5>- Emma Rodriguez</h5>
-                    </div>
-                </div>
+
+    <!-- Emma Rodriguez -->
+    <div class="col-lg-4">
+        <div class="testimonial-card">
+            <img src="images/customer-emma.jpg" alt="Emma Rodriguez" class="customer-photo">
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
             </div>
+            <p>"Love the community feel here. The baristas remember my order, and I've made so many friends. It's more than just a coffee shop - it's home."</p>
+            <h5>- Emma Rodriguez</h5>
         </div>
+    </div>
+
+    <!-- Li Wei -->
+    <div class="col-lg-4">
+        <div class="testimonial-card">
+            <img src="images/customer-li.jpg" alt="Li Wei" class="customer-photo">
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <p>"The matcha latte is my go-to. June Coffee Shop has the perfect vibe for studying or just unwinding after work."</p>
+            <h5>- Li Wei</h5>
+        </div>
+    </div>
+
+    <!-- James Carter -->
+    <div class="col-lg-4">
+        <div class="testimonial-card">
+            <img src="images/customer-james.jpg" alt="James Carter" class="customer-photo">
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <p>"I hosted my book club here last month—everyone loved the cozy corner and the pastries were a hit. Highly recommend!"</p>
+            <h5>- James Carter</h5>
+        </div>
+    </div>
+</div>
     </section>
     <!-- #endregion -->
 
@@ -339,7 +372,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <input type="text" class="form-control" placeholder="Your Name" required id="contactName">
-                            </div>
+                            </div>  
                             <div class="col-md-6">
                                 <input type="email" class="form-control" placeholder="Your Email" required id="contactEmail">
                             </div>
@@ -355,15 +388,15 @@
                     <div class="contact-info">
                         <div class="mb-4">
                             <h5><i class="fas fa-map-marker-alt me-2"></i>Address</h5>
-                            <p>123 Coffee Street<br>Downtown, City 12345</p>
+                            <p>123 Coffee Street<br>Phnom Penh</p>
                         </div>
                         <div class="mb-4">
                             <h5><i class="fas fa-phone me-2"></i>Phone</h5>
-                            <p>(555) 123-4567</p>
+                            <p>(+855) 123-4567</p>
                         </div>
                         <div class="mb-4">
                             <h5><i class="fas fa-envelope me-2"></i>Email</h5>
-                            <p>hello@brewhaven.com</p>
+                            <p>hello@junecoffeeshop.com</p>
                         </div>
                         <div class="mb-4">
                             <h5><i class="fas fa-clock me-2"></i>Hours</h5>
@@ -410,13 +443,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">
-                    <h5><i class="fas fa-coffee"></i> Brew Haven</h5>
+                    <h5><i class="fas fa-coffee"></i> June Coffee Shop</h5>
                     <p>Creating memorable coffee experiences since 2018. We're more than just a coffee shop - we're your neighborhood gathering place.</p>
                     <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://web.facebook.com/CoffeeandQuotes/?_rdc=1&_rdr#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/theworlds100bestcoffeeshops/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/coffeeshopldn"><i class="fab fa-twitter"></i></a>
+                        <a href="https://mk.linkedin.com/in/coffee-shop-75aaa747?trk=people-guest_people_search-card"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-2">
@@ -439,15 +472,15 @@
                 </div>
                 <div class="col-lg-3">
                     <h5>Contact Info</h5>
-                    <p><i class="fas fa-map-marker-alt me-2"></i>123 Coffee Street, Downtown</p>
-                    <p><i class="fas fa-phone me-2"></i>(555) 123-4567</p>
-                    <p><i class="fas fa-envelope me-2"></i>hello@brewhaven.com</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i>123 Coffee Street, Phnom Penh</p>
+                    <p><i class="fas fa-phone me-2"></i>(+855) 123-4567</p>
+                    <p><i class="fas fa-envelope me-2"></i>hello@junecoffeeshop.com</p>
                 </div>
             </div>
             <hr class="my-4">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <p>&copy; 2024 Brew Haven. All rights reserved.</p>
+                    <p>&copy; 2024 June Coffee Shop. All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
                     <a href="#" class="me-3">Privacy Policy</a>

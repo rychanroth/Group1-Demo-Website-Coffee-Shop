@@ -234,29 +234,56 @@ function showNotification(message, type) {
 
     const notification = document.createElement('div');
     notification.className = `alert alert-${getAlertType(type)} notification-alert position-fixed`;
-    notification.style.cssText = 'top: 100px; right: 20px; z-index: 1050; min-width: 300px; max-width: 400px;';
+    
+    // Position notification at current viewport, not fixed to top
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const viewportHeight = window.innerHeight;
+    const notificationTop = scrollTop + 20; // 20px from top of current viewport
+    
+    notification.style.cssText = `
+        top: ${notificationTop}px; 
+        right: 20px; 
+        z-index: 1050; 
+        min-width: 320px; 
+        max-width: 420px;
+        position: absolute;
+    `;
     
     notification.innerHTML = `
         <div class="d-flex align-items-start">
-            <div class="me-2">
-                <i class="fas ${getNotificationIcon(type)}"></i>
+            <div class="me-3">
+                <i class="fas ${getNotificationIcon(type)}" style="font-size: 1.2rem; margin-top: 2px;"></i>
             </div>
             <div class="flex-grow-1">
-                <strong>${getNotificationTitle(type)}</strong>
-                <div style="white-space: pre-line; margin-top: 5px;">${message}</div>
+                <div class="fw-bold mb-1">${getNotificationTitle(type)}</div>
+                <div style="white-space: pre-line; font-size: 0.9rem; line-height: 1.4;">${message}</div>
             </div>
-            <button type="button" class="btn-close" onclick="this.closest('.notification-alert').remove()"></button>
+            <button type="button" class="btn-close ms-2" onclick="this.closest('.notification-alert').remove()" style="font-size: 0.8rem;"></button>
         </div>
     `;
     
     document.body.appendChild(notification);
     
-    // Auto-remove after 5 seconds
+    // Auto-remove after 6 seconds
     setTimeout(() => {
         if (notification.parentElement) {
-            notification.remove();
+            notification.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+            notification.style.opacity = '0';
+            notification.style.transform = 'translateX(100%)';
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.remove();
+                }
+            }, 300);
         }
-    }, 5000);
+    }, 6000);
+    
+    // Add click to dismiss
+    notification.addEventListener('click', function(e) {
+        if (!e.target.classList.contains('btn-close')) {
+            this.remove();
+        }
+    });
 }
 
 function getAlertType(type) {
@@ -292,7 +319,7 @@ function getNotificationTitle(type) {
 
 /* #region Map Integration */
 function openMap() {
-    const address = "123 Coffee Street, Downtown, City 12345";
+    const address = "COFFEE CORNER By PeyPeyDy, Phnom Penh"; /* just placeholder */
     const encodedAddress = encodeURIComponent(address);
     const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
     
@@ -320,12 +347,25 @@ function animateOnScroll() {
 // Navbar background change on scroll
 function handleNavbarScroll() {
     const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 100) {
-        navbar.style.background = 'rgba(44, 24, 16, 0.98)';
-        navbar.style.backdropFilter = 'blur(10px)';
+    if (window.scrollY > 50) {
+        // More opaque when scrolled
+        navbar.style.background = 'rgba(245, 241, 232, 0.98)';
+        navbar.style.backdropFilter = 'blur(20px)';
+        navbar.style.borderBottom = '1px solid rgba(196, 164, 124, 0.3)';
     } else {
-        navbar.style.background = 'rgba(44, 24, 16, 0.95)';
-        navbar.style.backdropFilter = 'blur(10px)';
+        // Semi-transparent at top
+        navbar.style.background = 'rgba(245, 241, 232, 0.95)';
+        navbar.style.backdropFilter = 'blur(15px)';
+        navbar.style.borderBottom = '1px solid rgba(196, 164, 124, 0.2)';
+    }
+    
+    // Handle dark theme navbar
+    if (document.body.hasAttribute('data-theme')) {
+        if (window.scrollY > 50) {
+            navbar.style.background = 'rgba(44, 36, 25, 0.98)';
+        } else {
+            navbar.style.background = 'rgba(44, 36, 25, 0.95)';
+        }
     }
 }
 
@@ -404,6 +444,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 100);
     
     // Initialize any other components
-    console.log('Brew Haven Coffee Shop website loaded successfully!');
+    console.log('June Coffee Shop website loaded successfully!');
 });
 /* #endregion */
